@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ScamShield | URL Security Scanner</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            🛡️ ScamShield
+        </div>
+
+        <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/history">Scan History</a>
+    <a href="#features">Features</a>
+    <a href="#about">About</a>
+</div>
+    </nav>
+
+
+    <main>
+
+        <section class="hero">
+
+            <div class="badge">
+                🔒 Cybersecurity URL Protection
+            </div>
+
+            <h1>
+                Detect Suspicious<br>
+                <span>URLs Before You Click</span>
+            </h1>
+
+            <p class="subtitle">
+                ScamShield analyzes website URLs and identifies
+                suspicious patterns that may indicate phishing or scams.
+            </p>
+
+
+            <div class="scanner-box">
+
+                <div class="input-area">
+                    <span>🔗</span>
+
+                    <input
+                        type="text"
+                        id="urlInput"
+                        placeholder="Enter website URL, e.g. https://example.com"
+                    >
+                </div>
+
+                <button onclick="scanURL()">
+                    🔍 Scan URL
+                </button>
+
+            </div>
+
+             <div id="resultBox" class="result-box"></div>
+
+            <p class="privacy">
+                🔐 Your URL is analyzed for security patterns.
+            </p>
+
+        </section>
+
+
+        <section id="features" class="features">
+
+            <h2>What ScamShield Checks</h2>
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <div class="icon">🔐</div>
+                    <h3>HTTPS Security</h3>
+                    <p>
+                        Checks whether the website uses a secure HTTPS connection.
+                    </p>
+                </div>
+
+
+                <div class="feature-card">
+                    <div class="icon">🔎</div>
+                    <h3>URL Analysis</h3>
+                    <p>
+                        Examines URL structure and suspicious patterns.
+                    </p>
+                </div>
+
+
+                <div class="feature-card">
+                    <div class="icon">⚠️</div>
+                    <h3>Risk Detection</h3>
+                    <p>
+                        Generates a risk score based on detected indicators.
+                    </p>
+                </div>
+
+
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h3>Security Report</h3>
+                    <p>
+                        Provides an easy-to-understand security analysis.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="about" class="about">
+
+            <h2>About ScamShield</h2>
+
+            <p>
+                ScamShield is a cybersecurity project designed to help users
+                understand potentially suspicious website URLs before visiting them.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>🛡️ ScamShield | Cybersecurity Project</p>
+        <p>Built with Python + Flask + HTML + CSS + JavaScript</p>
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

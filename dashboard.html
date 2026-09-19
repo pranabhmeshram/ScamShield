@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ScamShield | Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">🛡️ ScamShield</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/history">Scan History</a>
+        </div>
+    </nav>
+
+    <main>
+
+        <section class="dashboard-section">
+
+            <div class="badge">
+                📊 Security Dashboard
+            </div>
+
+            <h1>ScamShield Dashboard</h1>
+
+            <p class="dashboard-subtitle">
+                Overview of URL security scans performed by ScamShield.
+            </p>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon">🔍</div>
+                    <h3>Total Scans</h3>
+                    <div class="stat-number">{{ total }}</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🟢</div>
+                    <h3>Low Risk</h3>
+                    <div class="stat-number">{{ low }}</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🟡</div>
+                    <h3>Medium Risk</h3>
+                    <div class="stat-number">{{ medium }}</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🔴</div>
+                    <h3>High Risk</h3>
+                    <div class="stat-number">{{ high }}</div>
+                </div>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <h2>Security Overview</h2>
+
+                {% if total > 0 %}
+
+                    <p>
+                        ScamShield has analyzed
+                        <strong>{{ total }}</strong>
+                        URL{% if total != 1 %}s{% endif %}.
+                    </p>
+
+                    <p>
+                        Currently,
+                        <strong>{{ high }}</strong>
+                        scan{% if high != 1 %}s{% endif %}
+                        {% if high == 1 %}is{% else %}are{% endif %}
+                        classified as High Risk.
+                    </p>
+
+                {% else %}
+
+                    <p>
+                        No URL scans have been performed yet.
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+            <div class="dashboard-actions">
+
+                <a href="/" class="dashboard-button">
+                    🔍 Scan URL
+                </a>
+
+                <a href="/history" class="dashboard-button secondary">
+                    📋 View History
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>🛡️ ScamShield</p>
+        <p>Python • Flask • SQLite • HTML • CSS • JavaScript</p>
+    </footer>
+
+</body>
+</html>
