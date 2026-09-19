@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ScamShield | Scan History</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">🛡️ ScamShield</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/history">Scan History</a>
+            <a href="/#features">Features</a>
+            <a href="/#about">About</a>
+        </div>
+    </nav>
+
+    <main>
+
+        <section class="history-section">
+
+            <div class="badge">
+                📊 Security Scan Records
+            </div>
+
+            <h1>Scan History</h1>
+
+            <p class="history-subtitle">
+                View previously analyzed URLs and their security risk scores.
+            </p>
+
+            <div class="history-table-container">
+
+                <table class="history-table">
+
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>URL</th>
+                            <th>Risk Score</th>
+                            <th>Status</th>
+                            <th>Scanned At</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% if records %}
+
+                            {% for record in records %}
+
+                            <tr>
+
+                                <td>{{ record[0] }}</td>
+
+                                <td class="url-cell">
+                                    {{ record[1] }}
+                                </td>
+
+                                <td>
+                                    <strong>
+                                        {{ record[2] }}/100
+                                    </strong>
+                                </td>
+
+                                <td>
+
+                                    {% if record[3] == "Low Risk" %}
+
+                                        <span class="history-status low-risk">
+                                            🟢 Low Risk
+                                        </span>
+
+                                    {% elif record[3] == "Medium Risk" %}
+
+                                        <span class="history-status medium-risk">
+                                            🟡 Medium Risk
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="history-status high-risk">
+                                            🔴 High Risk
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+                                <td>
+                                    {{ record[5] }}
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        {% else %}
+
+                            <tr>
+                                <td colspan="5" class="empty-history">
+                                    No scans found yet.
+                                </td>
+                            </tr>
+
+                        {% endif %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="history-actions">
+
+                <a href="/" class="back-button">
+                    ← Scan Another URL
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>🛡️ ScamShield</p>
+        <p>Python • Flask • SQLite • HTML • CSS • JavaScript</p>
+    </footer>
+
+</body>
+</html>
